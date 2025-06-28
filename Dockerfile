@@ -13,6 +13,9 @@ RUN pip install --upgrade pip
 # Instala as dependências
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Treina o modelo
+RUN rasa train
+
 # Expõe a porta padrão do Rasa
 EXPOSE 5005
 
