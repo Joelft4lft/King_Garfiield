@@ -1,0 +1,212 @@
+version: "3.1"
+
+nlu:
+  - intent: saudacao
+    examples: |
+      - Olá
+      - Oi
+      - Bom dia
+      - Boa tarde
+      - Boa noite
+      - E aí, tudo bem?
+      - Alô
+      - Como vai?
+
+  - intent: goodbye
+    examples: |
+      - Tchau, até logo!
+      - Adeus, até mais tarde.
+      - Foi bom falar com você, até a próxima.
+      - Obrigado, boa noite.
+      - Valeu, até mais.
+      - Falou, até breve.
+      - Até logo, cuida-se!
+      - Boa noite, até amanhã.
+      - Até mais, foi um prazer.
+      - Adeus, espero te ver em breve.
+      - Bom descanso, até a próxima!
+      - Até mais tarde, cuide-se.
+
+  - intent: bot_challenge
+    examples: |
+      - Você é um robô?
+      - Quem está do outro lado da conversa?
+      - Estou falando com um humano ou com um bot?
+      - Você é uma inteligência artificial?
+      - Quem está me respondendo agora?
+      - Você é um assistente virtual ou uma pessoa real?
+      - Você é um bot de verdade?
+      - Estou conversando com uma máquina ou com alguém de verdade?
+      - Você entende mesmo o que eu falo?
+      - Como sei se estou conversando com um robô ou uma pessoa?
+
+  - intent: perguntar_como_chegar
+    examples: |
+      - Como chego à King Garfield House a partir da estação de trem?
+      - Qual o melhor caminho para chegar à King Garfield House?
+      - Pode me dar direções para a King Garfield House?
+      - Como faço para chegar à King Garfield House de carro?
+      - Qual ônibus passa perto da King Garfield House?
+      - Onde fica exatamente a King Garfield House?
+      - Me ajude a encontrar o caminho até a King Garfield House.
+      - Como faço para chegar à King Garfield House de transporte público?
+      - Tem um mapa para eu chegar até a King Garfield House?
+      - Qual é a melhor forma de chegar à King Garfield House de táxi?
+
+  - intent: informacoes_sobre_chaves
+    examples: |
+      - Quais são as chaves que o chaveiro tem?
+      - O que a chave do prédio abre exatamente?
+      - Como funciona a fechadura do prédio?
+      - Qual chave abre o portão?
+      - Para que serve cada chave que tenho?
+      - Qual chave abre a porta da garagem?
+      - A chave da entrada também serve para outras portas?
+      - Preciso usar chave para entrar na casa ou só o código?
+      - As chaves são as mesmas para todas as portas?
+      - A chave do prédio abre todas as portas da casa?
+      - Como sei qual chave usar para abrir a porta principal?
+      - A chave da porta da frente abre o portão também?
+
+  - intent: informacoes_aparelhos_eletricos
+    examples: |
+      - Posso ligar todos os aparelhos ao mesmo tempo?
+      - O que acontece se eu ligar muitos aparelhos ao mesmo tempo?
+      - Posso usar o micro-ondas e a torradeira ao mesmo tempo?
+      - A energia pode cair se eu ligar vários aparelhos juntos?
+      - O que fazer se a energia elétrica se desconectar?
+      - Qual é o problema de usar a chaleira e o fogão ao mesmo tempo?
+      - Onde está o disjuntor principal?
+      - O que devo fazer se a energia acabar?
+      - Posso ligar a máquina de lavar e o ar-condicionado juntos?
+      - A energia da casa é forte o suficiente para ligar todos os aparelhos de uma vez?
+      - Existe algum risco em ligar a geladeira e o secador ao mesmo tempo?
+      - Onde fica o painel para ligar a energia de novo?
+
+  - intent: informacoes_escada_kgh
+    examples: |
+      - Como é a escada para o King Garfield House?
+      - A escada do KGH é segura para subir?
+      - Quais cuidados devo ter ao usar a escada do KGH?
+      - A escada do KGH é muito inclinada?
+      - Existe corrimão na escada do prédio?
+      - Posso escorregar facilmente na escada?
+      - A escada é estreita ou larga?
+      - Quantos degraus tem a escada do KGH?
+      - É perigoso usar a escada à noite sem luz?
+      - A escada faz barulho quando a gente sobe?
+      - Preciso usar a luz para subir na escada?
+      - A escada é bem iluminada ou tem lugares escuros?
+
+  - intent: informacoes_barulho
+    examples: |
+      - O que fazer sobre o barulho no prédio?
+      - Existe algum horário em que não posso fazer barulho?
+      - Os vizinhos reclamam muito do barulho?
+      - Posso fazer festas no prédio?
+      - Posso ouvir música alta durante a noite?
+      - Quais são as regras para fazer barulho no prédio?
+      - É permitido usar aspirador de pó à noite?
+      - Até que horas posso fazer barulho no prédio?
+      - Onde posso fazer festas sem incomodar os outros?
+      - O prédio tem algum regulamento sobre o nível de barulho?
+      - Como faço para não incomodar os vizinhos com barulho?
+      - Quando posso tocar música alta sem incomodar ninguém?
+
+  - intent: informacoes_contato_urgente
+    examples: |
+      - Quais são os números de emergência que eu devo saber?
+      - Como posso entrar em contato em caso de incêndio?
+      - Qual é o número para chamar uma ambulância?
+      - Se acontecer algo grave, qual número de telefone devo ligar?
+      - Quem devo contatar se houver um problema urgente?
+      - Em caso de emergência, para quem eu ligo?
+      - Onde encontro os números de emergência da casa?
+      - Como acionar a ajuda urgente no prédio?
+      - Existe algum número específico para emergências com a casa?
+      - Quais números devo ter em mente em situações urgentes?
+      - Como posso obter ajuda se eu me ferir na casa?
+      - Qual é o telefone para contato em caso de incêndio?
+
+  - intent: informacoes_restaurantes
+    examples: |
+      - Onde posso comer bem perto daqui?
+      - Pode indicar bons restaurantes em Bragança?
+      - Quais são os melhores locais para almoçar?
+      - Sabe de algum lugar bom para jantar perto da casa?
+      - Alguma recomendação de restaurante no centro?
+      - Onde encontro tapas ou petiscos por aqui?
+
+  - intent: perguntar_rotas_disponiveis
+    examples: |
+      - Quais são as rotas disponíveis?
+      - Quais são as rotas que vocês oferecem?
+      - Me fale sobre as rotas disponíveis
+      - Quais são as opções de rotas?
+      - O que vocês têm de rotas?
+
+  - intent: rota_dos_pombais
+    examples: |
+      - Rota dos Pombais
+      - Quero saber sobre a Rota dos Pombais
+      - Me fale mais sobre a Rota dos Pombais
+
+  - intent: ponto_1_pombais
+    examples: |
+      - Ponto 1
+      - O que são os pombais?
+      - Explica o Ponto 1
+
+  - intent: ponto_2_arquitetura
+    examples: |
+      - Arquitetura
+      - Me fale sobre o ponto 2 da rota
+      - Como chegar ao ponto 2 da Rota dos Pombais?
+
+  - intent: ponto_3_importancia
+    examples: |
+      - Importância
+      - Me fale sobre o ponto 3 da rota
+      - Como chegar ao ponto 3 da Rota dos Pombais?
+
+  - intent: ponto_4_preservacao
+    examples: |
+      - Preservação
+      - Me fale sobre o ponto 4 da rota
+      - Como chegar ao ponto 4 da Rota dos Pombais?
+
+  - intent: ponto_5_cova_de_lua
+    examples: |
+      - Cova de Lua
+      - Me fale sobre o ponto 5 da rota
+      - Como chegar ao ponto 5 da Rota dos Pombais?
+  - intent: final_da_rota_pombais
+    examples: |
+      - final_da_rota_pombais
+      - Encerrar rota pombais
+
+  - intent: rota_dos_freixos_no_planalto_mirandês
+    examples: |
+      - Rota_dos_freixos_no_planalto_mirandês
+      - Quero saber sobre a Rota dos dos_freixos_no_planalto_mirandês
+      - Me fale mais sobre a rota_dos_freixos_no_planalto_mirandês
+
+  - intent: A_paisagem_do_planalto_mirandês
+    examples: |
+      - A_paisagem_do_planalto_mirandês
+
+  - intent: Os_freixos_guardiões_da_paisagem
+    examples: |
+      - Os_freixos_guardiões_da_paisagem
+
+  - intent: A_aldeia_e_a_tradição
+    examples: |
+      - A_aldeia_e_a_tradição
+
+  - intent: Os_lameiros_e_o_seu_papel_na_vida_rural
+    examples: |
+      - Os_lameiros_e_o_seu_papel_na_vida_rural
+
+  - intent: final_da_rota_sobre_planalto_mirandês
+    examples: |
+      - final_da_rota_sobre_planalto_mirandês

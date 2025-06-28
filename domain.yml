@@ -1,0 +1,290 @@
+version: "3.1"
+
+intents:
+  - saudacao
+  - goodbye
+  - bot_challenge
+  - perguntar_como_chegar
+  - informacoes_sobre_chaves
+  - informacoes_aparelhos_eletricos
+  - informacoes_escada_kgh
+  - informacoes_barulho
+  - informacoes_contato_urgente
+  - informacoes_restaurantes
+  - rota_dos_pombais
+  - ponto_1_pombais
+  - ponto_2_arquitetura
+  - ponto_3_importancia
+  - ponto_4_preservacao
+  - ponto_5_cova_de_lua
+  - final_da_rota_pombais
+  - perguntar_rotas_disponiveis
+  - terminar_rota
+
+responses:
+  utter_saudacao:
+    - text: "Olá! Como posso ajudar você com informações sobre a casa?"
+
+  utter_goodbye:
+    - text: "Até a próxima!"
+
+  utter_iamabot:
+    - text: "Sou um assistente virtual criado para ajudar com informações sobre a casa."
+
+  utter_como_chegar:
+    - text: |
+        🗺️ Como chegar à King Garfield House:
+
+        Ao chegar a Bragança, siga em direção ao Centro Histórico. 
+        Passe pela Praça da Sé e desça em direção ao Largo do Principal (monumento aos soldados mortos em França). 
+        Depois de passar o monumento, suba pela rua imediatamente à direita (*Rua Serpa Pinto*). 
+        Suba até metade da rua e vire à direita na travessa. A casa fica em frente e é facilmente reconhecida por uma janela redonda.
+
+        📞 Se necessário, ligue para:
+        - Fernando: +351 937 618 081  
+        - Cris: +351 932 378 378
+
+        https://maps.app.goo.gl/Yh1k773BVH3TcU9T8
+
+  utter_informacoes_sobre_chaves:
+    - text: |
+        🔑 Informações sobre as chaves:
+
+        O chaveiro contém três chaves:
+        - 1 para entrada no prédio;
+        - 1 para entrada em casa;
+        - 1 para acesso ao espaço KGH.
+
+        A fechadura da porta do prédio funciona ao contrário (abre rodando para a esquerda). 
+        É comum a porta estar aberta (costume local), mas recomenda-se fechá-la, especialmente à noite.
+
+  utter_informacoes_aparelhos_eletricos:
+    - text: |
+        ⚡ Aparelhos elétricos:
+
+        Evite ligar todos os aparelhos elétricos ao mesmo tempo, especialmente:
+        - Chaleira elétrica
+        - Fogão
+        - Torradeira
+
+        Se faltar energia, reative-a no quadro geral, localizado no hall de entrada do apartamento.
+
+  utter_informacoes_escada_kgh:
+    - text: |
+        🪜 Atenção à escada!
+
+        A escada de acesso ao KGH tem altura reduzida. 
+        Recomendamos cuidado redobrado ao subir ou descer.
+
+  utter_informacoes_barulho:
+    - text: |
+        🤫 Silêncio, por favor!
+
+        O prédio é partilhado com outros vizinhos. 
+        Evite barulhos excessivos, especialmente à noite.
+
+  utter_informacoes_contato_urgente:
+    - text: |
+        📞 Contato urgente:
+        Em qualquer situação, ligue para:
+        - +351 937 618 081  
+        - +351 912 045 339
+
+  utter_informacoes_restaurantes:
+    - text: |
+        🍽️ *Sugestões de restaurantes no centro de Bragança*:
+
+        Para refeições completas:
+        - Poças
+        - Sport
+        - Rosina
+
+        Para petiscos e tapas:
+        - Sotinho
+        - Lost Corner
+
+        No castelo (mais sofisticados):
+        - Javali
+        - Zé Tuga
+
+  utter_rota_dos_pombais:
+    - text: |
+        🕊️🏛️ Bem-vindo à Rota dos Pombais no Nordeste Transmontano!
+
+        A Rota dos Pombais é uma viagem fascinante pela tradição e arquitetura rural do Nordeste Transmontano. 
+        Conheça os pombais tradicionais e explore a história, arquitetura e a importância dessa prática para a economia local.
+      buttons:
+        - title: "➡️ O que são Pombais?"
+          payload: "/ponto_1_pombais"
+
+  utter_ponto_1_pombais:
+    - text: |
+        📍 **Ponto 1: O que são os pombais transmontanos?**
+
+        Os pombais são estruturas típicas do Nordeste Transmontano, construídas em pedra de xisto ou granito, com reboco de cal branca e telhados de telha cerâmica ou ardósia. 
+        São utilizados para criar pombos e também para coletar estrume, um excelente fertilizante natural.
+
+        🐦 Curiosidade: Os pombos fazem os seus ninhos em nichos organizados, parecidos com favos de mel.
+      buttons:
+        - title: "➡️ Arquitetura"
+          payload: "/ponto_2_arquitetura"
+
+  utter_ponto_2_arquitetura:
+    - text: |
+        A arquitetura dos pombais é bastante peculiar. Geralmente compostos por paredes robustas de pedra, como xisto ou granito, com revestimentos de cal branca, esses edifícios apresentam um telhado de madeira coberto com telhas cerâmicas ou placas de ardósia. Cada detalhe dos pombais transmontanos foi cuidadosamente projetado para garantir conforto e segurança às aves. Desde o formato da construção até os elementos de proteção, tudo foi pensado para criar um ambiente ideal para os pombos.
+
+        🏛️Elementos arquitetónicos essenciais:
+
+        ✔ Nichos de nidificação: Pequenas cavidades no interior das paredes, organizadas como favos de mel, proporcionando abrigo e segurança para os ninhos.
+
+        ✔ Saídas de voo: Pequenas aberturas estrategicamente colocadas para facilitar a entrada e saída dos pombos, garantindo boa circulação de ar e iluminação natural.
+
+        ✔ Corta-ventos: Elementos que protegem os pombais dos ventos predominantes, impedindo correntes de ar frias que poderiam prejudicar os ninhos.
+
+        ✔ Telhados de duas águas ou cónicos: Projetados para garantir a drenagem da água da chuva e evitar infiltrações no interior.
+
+        ✔ Porta de acesso ao interior: Uma única porta de acesso elevada em relação ao solo para proteger da entrada de animais como roedores e répteis.
+
+        ✔ Pináculos: Além do valor estético, estas peças impedem que aves de rapina se empoleirem e ataquem os pombos e servem ainda de identificação e orientação para as aves.
+
+        🌿 Sabia que? Alguns pombais têm plataformas elevadas para facilitar a recolha do estrume, permitindo que os agricultores aproveitem esse fertilizante sem perturbar os ninhos.
+
+        🚶 Sugestão: Toque nas paredes dos pombais e sinta a textura da cal branca e da pedra. Esse revestimento ajuda a regular a temperatura no interior, mantendo um ambiente fresco no verão e protegido no inverno.
+      buttons:
+        - title: "➡️ Importância"
+          payload: "/ponto_3_importancia"
+
+  utter_ponto_3_importancia:
+    - text: |
+        📍 Muito mais do que simples abrigos para aves, os pombais eram essenciais para a economia rural da região. A criação de pombos fornecia carne e ovos, mas também ajudava no controle de pragas agrícolas. Além disso, o estrume dos pombos era altamente valorizado como fertilizante natural para os campos.
+
+        🌿 Sabia que? O estrume de pombo era tão rico em nutrientes que, antigamente, era tratado como um bem precioso usado para fertilizar as culturas mais valiosas como as hortas, sendo até vendido ou trocado entre agricultores.
+
+        🚶 Sugestão: Imagine como estes pombais, hoje testemunhos do passado, já foram verdadeiros centros de produção agrícola sustentável!
+      buttons:
+        - title: "➡️ Preservação"
+          payload: "/ponto_4_preservacao"
+
+  utter_ponto_4_preservacao:
+    - text: |
+        📍 **Ponto 4: Preservação e revitalização dos pombais**
+
+        Com a modernização da agricultura, o uso dos pombais diminuiu, mas esforços de preservação têm sido feitos. Em aldeias como Uva, há pombais preservados como um museu vivo da tradição.
+
+        🏡 Destaque: Uva tem cerca de 32 pombais preservados.
+      buttons:
+        - title: "➡️ Cova de Lua"
+          payload: "/ponto_5_cova_de_lua"
+
+  utter_ponto_5_cova_de_lua:
+    - text: |
+        📍 **Ponto 5: O Pombal de Cova de Lua, um exemplo de integração na paisagem**
+
+        O pombal de Cova de Lua destaca-se pela sua harmonia com a natureza. Construído próximo a fontes de água, cria um ambiente ideal para os pombos e mantém a tradição viva.
+
+        🌍 Curiosidade: O formato e orientação dos pombais foram projetados para garantir boa ventilação e proteção contra ventos fortes.
+      buttons:
+        - title: "🔙 Encerrar rota"
+          payload: "/final_da_rota_pombais"
+
+  utter_perguntar_rotas_disponiveis:
+    - text: "Quais rotas você gostaria de conhecer? Temos várias opções disponíveis!"
+
+  utter_final_da_rota_pombais:
+    - text: |
+        📍  Os pombais do Nordeste Transmontano são mais do que simples construções; são símbolos da identidade local e da sabedoria de gerações de agricultores. A sua preservação não apenas valoriza o património arquitetónico, mas também reforça a importância de práticas agrícolas sustentáveis.
+
+        🏛️ Leve consigo esta mensagem: Cada pombal conta uma história. Ao protegê-los, estamos a garantir que essa história continue a ser contada no futuro.
+
+        🔄 Opção Extra: Se quiser aprofundar a experiência, visite uma associação local como a Palombar, que trabalha na recuperação de pombais e na conservação da biodiversidade.
+
+        🕊️ Boa viagem e desfrute desta fascinante rota pelos pombais transmontanos.
+      buttons:
+        - title: "Reiniciar Chat"
+          payload: "/reset_chat"
+
+  utter_rota_dos_freixos_no_planalto_mirandês:
+    - text: |
+        Bem-vindo à Rota dos Freixos, um percurso encantador pelo coração do Planalto Mirandês!
+
+        Este passeio leva-o a descobrir uma paisagem única no Nordeste de Portugal, onde os lameiros, delimitados por majestosos freixos (Fraxinus angustifolia), contam a história da relação entre a natureza e a atividade agrícola tradicional. Ao longo desta rota, encontrará miradouros naturais, aldeias pitorescas e uma vegetação que muda com as estações, proporcionando um espetáculo visual em qualquer época do ano.
+      buttons:
+        - title: "Paisagem Do Planalto Mirandês"
+          payload: "/A_paisagem_do_planalto_mirandês"
+
+  utter_A_paisagem_do_planalto_mirandês:
+    - text: |
+        📍 A medida que avança pelo percurso, observe a vastidão dos campos rodeados por pequenas aldeias rurais. O Planalto Mirandês é marcado pela sua altitude entre 650 e 800 metros, sendo uma região de clima contrastante, com verões quentes e invernos rigorosos. Os rios Sabor e Douro desenham os limites deste território, conferindo-lhe uma beleza natural singular.
+
+        🚶 Sugestão: Faça uma paragem para fotografar os campos agrícolas divididos por muros de pedra seca, uma técnica ancestral usada para marcar as propriedades e proteger as culturas.
+      buttons:
+        - title: "Os_lameiros e o seu_papel na vida rural"
+          payload: "/Os_lameiros_e_o_seu_papel_na_vida_rural"
+
+  utter_Os_lameiros_e_o_seu_papel_na_vida_rural:
+    - text: |
+        Os lameiros são pastagens permanentes que garantem alimento ao gado ao longo do ano. Aqui, os agricultores seguem um sistema agrícola tradicional, mantendo o equilíbrio entre a pecuária e a preservação do solo.
+
+        🌿 Sabia que? No verão, quando a vegetação dos lameiros seca, os agricultores recorrem às folhas de freixo como suplemento alimentar para os animais, garantindo que o gado tenha sempre sustento.
+
+        🚶 Sugestão: Se visitar na primavera, verá os lameiros cobertos por um manto verde salpicado por cores vibrantes, enquanto no outono as folhas douradas dos freixos criam uma atmosfera mágica.
+      buttons:
+        - title: "Os freixos: Guardiões da paisagem"
+          payload: "/Os_freixos_guardiões_da_paisagem"
+
+  utter_Os_freixos_guardiões_da_paisagem:
+    - text: |
+        Os freixos, que podem ser encontrados em bordadura ou dispersos pelos lameiros, são muito mais do que meras árvores. No verão eles oferecem sombra aos animais e no inverno abrigo da chuva, protegem os solos da erosão e fornecem madeira para construção e lenha para aquecimento.
+
+        🌳 Curiosidade: Os habitantes locais consideram que os lameiros com freixos são mais bonitos e harmoniosos. A comparação que fazem é curiosa: "Uma paisagem sem freixos é como uma sala sem móveis."
+
+        🚶 Sugestão: Pare um momento sob a copa de um freixo centenário e aprecie o som do vento entre as folhas. É um convite à serenidade!
+      buttons:
+        - title: "A aldeia e a tradição"
+          payload: "/A_aldeia_e_a_tradição"
+
+  utter_A_aldeia_e_a_tradição:
+    - text: |
+        Ao longo da rota, passará por pequenas aldeias onde a cultura mirandesa ainda está viva. Aproveite para conversar com os habitantes, conhecer as construções em pedra e saborear pratos típicos como a posta mirandesa ou os enchidos artesanais.
+
+        🥾 Dica de viajante: Se quiser uma experiência autêntica, visite no final do verão e veja os agricultores a praticarem a "esgalha", quando cortam as folhas dos freixos para alimentar os animais.
+      buttons:
+        - title: "Final da Rota"
+          payload: "/final_da_rota_sobre_planalto_mirandês"
+
+  utter_final_da_rota_sobre_planalto_mirandês:
+    - text: |
+        Ao terminar este percurso, terá conhecido de perto a importância dos freixos e dos lameiros para a vida rural do Planalto Mirandês. Mais do que uma paisagem bonita, esta é uma terra de tradição, onde a natureza e o trabalho humano coexistem há séculos.
+
+        🌍 Leve consigo esta mensagem: A preservação desta paisagem depende de todos nós. Ao valorizar estas práticas sustentáveis, ajudamos a manter viva a identidade deste território único!
+
+        🔄 Opção Extra: Se quiser prolongar a visita, explore outros percursos pedestres na região ou visite os miradouros que oferecem vistas inesquecíveis sobre os vales do Douro e Sabor.
+
+        Boa viagem e desfrute do Planalto Mirandês! 🚶‍♂️🌿✨
+      buttons:
+        - title: "Reiniciar Chat"
+          payload: "/reset_chat"
+
+actions:
+  - utter_saudacao
+  - utter_goodbye
+  - utter_iamabot
+  - utter_como_chegar
+  - utter_informacoes_sobre_chaves
+  - utter_informacoes_aparelhos_eletricos
+  - utter_informacoes_escada_kgh
+  - utter_informacoes_barulho
+  - utter_informacoes_contato_urgente
+  - utter_informacoes_restaurantes
+  - utter_rota_dos_pombais
+  - utter_ponto_1_pombais
+  - utter_ponto_2_arquitetura
+  - utter_ponto_3_importancia
+  - utter_ponto_4_preservacao
+  - utter_ponto_5_cova_de_lua
+  - utter_perguntar_rotas_disponiveis
+  - utter_terminar_rota
+  - utter_final_da_rota_pombais
+  - utter_A_paisagem_do_planalto_mirandês
+  - utter_Os_lameiros_e_o_seu_papel_na_vida_rural
+  - utter_final_da_rota_sobre_planalto_mirandês

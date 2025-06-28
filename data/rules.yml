@@ -1,0 +1,122 @@
+version: "3.1"
+
+rules:
+  - rule: 🗝️ Responder sobre chaves
+    steps:
+      - intent: informacoes_sobre_chaves
+      - action: utter_informacoes_sobre_chaves
+
+  - rule: 📍 Listar rotas disponíveis
+    steps:
+      - intent: perguntar_rotas_disponiveis
+      - action: utter_perguntar_rotas_disponiveis
+
+  - rule: ⚡ Informações sobre aparelhos elétricos
+    steps:
+      - intent: informacoes_aparelhos_eletricos
+      - action: utter_informacoes_aparelhos_eletricos
+
+  - rule: 🪜 Informações sobre escada do KGH
+    steps:
+      - intent: informacoes_escada_kgh
+      - action: utter_informacoes_escada_kgh
+
+  - rule: 🤫 Informações sobre barulho
+    steps:
+      - intent: informacoes_barulho
+      - action: utter_informacoes_barulho
+
+  - rule: 📞 Contatos de emergência
+    steps:
+      - intent: informacoes_contato_urgente
+      - action: utter_informacoes_contato_urgente
+
+  - rule: 🤖 Resposta ao desafio do bot
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+
+  - rule: 👋 Despedida
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: 🗺️ Como chegar ao local
+    steps:
+      - intent: perguntar_como_chegar
+      - action: utter_como_chegar
+
+  - rule: 🍽️ Restaurantes próximos
+    steps:
+      - intent: informacoes_restaurantes
+      - action: utter_informacoes_restaurantes
+
+  - rule: 🙋‍♂️ Saudação inicial
+    steps:
+      - intent: saudacao
+      - action: utter_saudacao
+
+  - rule: 🧭 Iniciar rota dos pombais
+    steps:
+      - intent: rota_dos_pombais
+      - action: utter_rota_dos_pombais
+
+  - rule: 📍 Ponto 1 - Pombais
+    steps:
+      - intent: ponto_1_pombais
+      - action: utter_ponto_1_pombais
+
+  - rule: 🏛️ Ponto 2 - Arquitetura
+    steps:
+      - intent: ponto_2_arquitetura
+      - action: utter_ponto_2_arquitetura
+
+  - rule: 🌳 Ponto 3 - Importância
+    steps:
+      - intent: ponto_3_importancia
+      - action: utter_ponto_3_importancia
+
+  - rule: 🌍 Ponto 4 - Preservação
+    steps:
+      - intent: ponto_4_preservacao
+      - action: utter_ponto_4_preservacao
+
+  - rule: 🌙 Ponto 5 - Cova de Lua
+    steps:
+      - intent: ponto_5_cova_de_lua
+      - action: utter_ponto_5_cova_de_lua
+
+  - rule: Final_da_rota_pombais
+    steps:
+      - intent: final_da_rota_pombais
+      - action: utter_final_da_rota_pombais
+
+  - rule: rota_dos_freixos_no_planalto_mirandês
+    steps:
+      - intent: rota_dos_freixos_no_planalto_mirandês
+      - action: utter_rota_dos_freixos_no_planalto_mirandês
+
+  - rule: A_paisagem_do_planalto_mirandês
+    steps:
+      - intent: A_paisagem_do_planalto_mirandês
+      - action: utter_A_paisagem_do_planalto_mirandês
+
+  - rule: Os_freixos_guardiões_da_paisagem
+    steps:
+      - intent: Os_freixos_guardiões_da_paisagem
+      - action: utter_Os_freixos_guardiões_da_paisagem
+
+  - rule: A_aldeia_e_a_tradição
+    steps:
+      - intent: A_aldeia_e_a_tradição
+      - action: utter_A_aldeia_e_a_tradição
+
+  - rule: Os_lameiros_e_o_seu_papel_na_vida_rural
+    steps:
+      - intent: Os_lameiros_e_o_seu_papel_na_vida_rural
+      - action: utter_Os_lameiros_e_o_seu_papel_na_vida_rural
+
+  - rule: final_da_rota_sobre_planalto_mirandês
+    steps:
+      - intent: final_da_rota_sobre_planalto_mirandês
+      - action: utter_final_da_rota_sobre_planalto_mirandês

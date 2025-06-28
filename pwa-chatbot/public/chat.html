@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./css/chat.css" />
+    <title>Chat - King Garfield</title>
+  </head>
+  <body>
+    <div class="top-right">
+      <div class="flag-dropdown">
+        <button
+          class="flag-btn"
+          onclick="toggleDropdown()"
+          aria-label="Selecionar idioma"
+        >
+          <img
+            id="current-flag"
+            src="./assets/portugal.png"
+            alt="Idioma atual"
+          />
+        </button>
+        <div
+          id="dropdown"
+          class="dropdown-content"
+          role="menu"
+          aria-hidden="true"
+        >
+          <button onclick="setLanguage('pt')" role="menuitem">
+            <img src="./assets/portugal.png" alt="Português" /> Português
+          </button>
+          <button onclick="setLanguage('en')" role="menuitem">
+            <img src="./assets/uk.png" alt="English" /> English
+          </button>
+          <button onclick="setLanguage('es')" role="menuitem">
+            <img src="./assets/espanha.png" alt="Español" /> Español
+          </button>
+          <button onclick="setLanguage('fr')" role="menuitem">
+            <img src="./assets/france.png" alt="Français" /> Français
+          </button>
+        </div>
+      </div>
+
+      <button
+        id="theme-toggle"
+        aria-label="Alternar tema"
+        title="Alternar tema"
+        style="
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 20px;
+          color: orange;
+        "
+      >
+        🌙
+      </button>
+    </div>
+
+    <img src="./assets/logo.png" alt="Logo King Garfield" id="logo" />
+
+    <div id="chat-box"></div>
+
+    <div id="input-area">
+      <input type="text" id="user-input" autocomplete="off" />
+      <button id="send-btn" onclick="sendMessage()">Enviar</button>
+      <button id="voice-btn" title="Clique para falar">🎤</button>
+    </div>
+
+    <a href="index.html" class="voltar" id="btn-voltar">Voltar</a>
+
+    <script>
+      const flags = {
+        pt: "./assets/portugal.png",
+        en: "./assets/uk.png",
+        es: "./assets/espanha.png",
+        fr: "./assets/france.png",
+      };
+
+      const keywords = {
+        pt: {
+          placeholder: "Digite sua mensagem...",
+          voltar: "Voltar",
+          temaClaro: "Tema Claro",
+          temaEscuro: "Tema Escuro",
+        },
+        en: {
+          placeholder: "Type your message...",
+          voltar: "Back",
+          temaClaro: "Light Theme",
+          temaEscuro: "Dark Theme",
+        },
+        es: {
+          placeholder: "Escribe tu mensaje...",
+          voltar: "Volver",
+          temaClaro: "Tema Claro",
+          temaEscuro: "Tema Oscuro",
+        },
+        fr: {
+          placeholder: "Tapez votre message...",
+          voltar: "Retour",
+          temaClaro: "Thème Clair",
+          temaEscuro: "Thème Sombre",
+        },
+      };
+
+      let lang = localStorage.getItem("selectedLanguage") || "pt";
+      let temaAtual = localStorage.getItem("theme") || "light";
+
+      const chatBox = document.getElementById("chat-box");
+      const userInput = document.getElementById("user-input");
+      const sendBtn = document.getElementById("send-btn");
+      const voiceBtn = document.getElementById("voice-btn");
+      const currentFlag = document.getElementById("current-flag");
+      const dropdown = document.getElementById("dropdown");
+      const themeToggleBtn = document.getElementById("theme-toggle");
+
+      function atualizarTextos() {
+        const kw = keywords[lang];
+        userInput.placeholder = kw.placeholder;
+        document.getElementById("btn-voltar").textContent = kw.voltar;
+        themeToggleBtn.textContent =
+          temaAtual === "dark" ? "☀️ " + kw.temaClaro : "🌙 " + kw.temaEscuro;
+        voiceBtn.title =
+          lang === "pt"
+            ? "Clique para falar"
+            : lang === "en"
+            ? "Click to speak"
+            : lang === "es"
+            ? "Clic para hablar"
+            : "Cliquez pour parler";
+      }
+
+      currentFlag.src = flags[lang];
+      document.body.classList.toggle("dark", temaAtual === "dark");
+
+      atualizarTextos();
+
+      function toggleDropdown() {
+        const isVisible = dropdown.style.display === "block";
+        dropdown.style.display = isVisible ? "none" : "block";
+        dropdown.setAttribute("aria-hidden", isVisible ? "true" : "false");
+      }
+
+      document.addEventListener("click", (e) => {
+        if (!dropdown.contains(e.target) && !currentFlag.contains(e.target)) {
+          dropdown.style.display = "none";
+          dropdown.setAttribute("aria-hidden", "true");
+        }
+      });
+
+      function setLanguage(language) {
+        if (!keywords[language]) return;
+        lang = language;
+        localStorage.setItem("selectedLanguage", lang);
+        currentFlag.src = flags[lang];
+        atualizarTextos();
+        dropdown.style.display = "none";
+        dropdown.setAttribute("aria-hidden", "true");
+      }
+
+      themeToggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+        temaAtual = document.body.classList.contains("dark") ? "dark" : "light";
+        localStorage.setItem("theme", temaAtual);
+        atualizarTextos();
+      });
+
+      function appendMessage(text, sender) {
+        const div = document.createElement("div");
+        div.className = `message ${sender}`;
+        div.textContent = text;
+        chatBox.appendChild(div);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+
+      async function sendMessage() {
+        const message = userInput.value.trim();
+        if (!message) return;
+
+        appendMessage(message, "user");
+        userInput.value = "";
+        userInput.disabled = true;
+        sendBtn.disabled = true;
+        voiceBtn.disabled = true;
+
+        try {
+          const res = await fetch(
+            "https://4f33-194-210-88-117.ngrok-free.app/webhook",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ text: message, languageCode: lang }),
+            }
+          );
+
+          const data = await res.json();
+          const respostas = data.fulfillment_response?.messages || [];
+
+          respostas.forEach((msg) => {
+            if (msg.text && Array.isArray(msg.text.text)) {
+              appendMessage(msg.text.text[0], "bot");
+            } else if (typeof msg.text === "string") {
+              appendMessage(msg.text, "bot");
+            }
+          });
+        } catch (error) {
+          const fallback = {
+            pt: "Erro na comunicação com o servidor.",
+            en: "Error communicating with the server.",
+            es: "Error en la comunicación con el servidor.",
+            fr: "Erreur de communication avec le serveur.",
+          };
+          appendMessage(fallback[lang] || fallback.pt, "bot");
+          console.error(error);
+        } finally {
+          userInput.disabled = false;
+          sendBtn.disabled = false;
+          voiceBtn.disabled = false;
+          userInput.focus();
+        }
+      }
+
+      userInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") sendMessage();
+      });
+
+      const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        voiceBtn.style.display = "none";
+      } else {
+        const recognition = new SpeechRecognition();
+        recognition.interimResults = false;
+        recognition.lang = lang;
+        let recognizing = false;
+
+        voiceBtn.addEventListener("click", () => {
+          if (recognizing) recognition.stop();
+          else {
+            recognition.lang = lang;
+            recognition.start();
+          }
+        });
+
+        recognition.onstart = () => {
+          recognizing = true;
+          voiceBtn.textContent = "🛑";
+        };
+
+        recognition.onend = () => {
+          recognizing = false;
+          voiceBtn.textContent = "🎤";
+        };
+
+        recognition.onerror = () => {
+          recognizing = false;
+          voiceBtn.textContent = "🎤";
+          const fallback = {
+            pt: "Erro no reconhecimento de voz.",
+            en: "Voice recognition error.",
+            es: "Error en el reconocimiento de voz.",
+            fr: "Erreur de reconnaissance vocale.",
+          };
+          appendMessage(fallback[lang] || fallback.pt, "bot");
+        };
+
+        recognition.onresult = (event) => {
+          const transcript = event.results[0][0].transcript;
+          userInput.value = transcript;
+          userInput.focus();
+        };
+      }
+    </script>
+  </body>
+</html>

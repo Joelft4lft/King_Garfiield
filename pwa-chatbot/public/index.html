@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chatbot CX</title>
+    <style>
+      /* seu CSS igual */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      body.light {
+        background-color: white;
+        color: black;
+      }
+
+      body.dark {
+        background-color: black;
+        color: white;
+      }
+
+      .logo {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 40px;
+        opacity: 0.9;
+      }
+
+      .button {
+        background-color: #ffa500;
+        padding: 14px 25px;
+        border-radius: 15px;
+        margin: 10px 0;
+        width: 80%;
+        max-width: 300px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.2s;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background-color: #ff8c00;
+      }
+
+      .top-right {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .flag-dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .flag-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .flag-btn img {
+        width: 32px;
+        height: 22px;
+        border-radius: 4px;
+      }
+
+      .dropdown-content button img {
+        width: 24px;
+        height: 16px;
+        border-radius: 3px;
+      }
+
+      .dropdown-content button {
+        background: none;
+        border: none;
+        width: 100%;
+        padding: 8px;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+      }
+
+      .dropdown-content button:hover {
+        background-color: #ddd;
+      }
+
+      .theme-toggle {
+        background-color: #ddd;
+        border: none;
+        padding: 6px 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: white;
+        border: 1px solid #ccc;
+        z-index: 1;
+        border-radius: 4px;
+        padding: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-right">
+      <div class="flag-dropdown">
+        <button class="flag-btn" onclick="toggleDropdown()">
+          <img id="current-flag" src="./assets/portugal.png" alt="Idioma" />
+        </button>
+        <div id="dropdown" class="dropdown-content">
+          <button onclick="setLanguage('pt')">
+            <img src="./assets/portugal.png" />Português
+          </button>
+          <button onclick="setLanguage('en')">
+            <img src="./assets/uk.png" />English
+          </button>
+          <button onclick="setLanguage('es')">
+            <img src="./assets/espanha.png" />Español
+          </button>
+          <button onclick="setLanguage('fr')">
+            <img src="./assets/france.png" />Français
+          </button>
+        </div>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()">🌗</button>
+    </div>
+
+    <img src="./assets/logo.png" alt="Logo" class="logo" />
+
+    <a id="btnRoutes" class="button" href="./rotas.html">🗺️ Ver Rotas</a>
+    <a id="btnChat" class="button" href="./chat.html">😺 Chat com Garfield</a>
+
+    <script>
+      const translations = {
+        pt: {
+          routes: "🗺️ Ver Rotas",
+          chat: "😺 Chat com Garfield",
+          flag: "./assets/portugal.png",
+        },
+        en: {
+          routes: "🗺️ View Routes",
+          chat: "😺 Chat with Garfield",
+          flag: "./assets/uk.png",
+        },
+        es: {
+          routes: "🗺️ Ver Rutas",
+          chat: "😺 Chat con Garfield",
+          flag: "./assets/espanha.png",
+        },
+        fr: {
+          routes: "🗺️ Voir les Itinéraires",
+          chat: "😺 Discussion avec Garfield",
+          flag: "./assets/france.png",
+        },
+      };
+
+      function toggleDropdown() {
+        const dropdown = document.getElementById("dropdown");
+        dropdown.style.display =
+          dropdown.style.display === "block" ? "none" : "block";
+      }
+
+      function setLanguage(lang) {
+        localStorage.setItem("selectedLanguage", lang);
+        updateTexts(lang);
+        updateLinks();
+        document.getElementById("dropdown").style.display = "none";
+      }
+
+      function updateTexts(lang) {
+        document.getElementById("btnRoutes").textContent =
+          translations[lang].routes;
+        document.getElementById("btnChat").textContent =
+          translations[lang].chat;
+        document.getElementById("current-flag").src = translations[lang].flag;
+      }
+
+      function toggleTheme() {
+        if (document.body.classList.contains("dark")) {
+          document.body.classList.replace("dark", "light");
+          localStorage.setItem("selectedTheme", "light");
+        } else {
+          document.body.classList.replace("light", "dark");
+          localStorage.setItem("selectedTheme", "dark");
+        }
+        updateLinks();
+      }
+
+      // Atualiza os links para passar idioma e tema
+      function updateLinks() {
+        const lang = localStorage.getItem("selectedLanguage") || "pt";
+        const theme = localStorage.getItem("selectedTheme") || "dark";
+
+        document.getElementById(
+          "btnRoutes"
+        ).href = `./rotas.html?lang=${lang}&theme=${theme}`;
+        document.getElementById(
+          "btnChat"
+        ).href = `./chat.html?lang=${lang}&theme=${theme}`;
+      }
+
+      // Aplica configurações ao carregar
+      window.onload = () => {
+        const savedLang = localStorage.getItem("selectedLanguage") || "pt";
+        const savedTheme = localStorage.getItem("selectedTheme") || "dark";
+
+        updateTexts(savedLang);
+        updateLinks();
+
+        document.body.classList.remove("light", "dark");
+        document.body.classList.add(savedTheme);
+      };
+
+      // Fecha dropdown se clicar fora
+      window.onclick = function (event) {
+        if (!event.target.closest(".flag-dropdown")) {
+          document.getElementById("dropdown").style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

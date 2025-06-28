@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./css/rotas.css" />
+    <title>Rotas</title>
+  </head>
+  <body>
+    <img id="logo" src="./assets/logo.png" alt="Logo do Chat" />
+
+    <!-- Dropdown de idiomas -->
+    <div class="flag-dropdown">
+      <button class="flag-btn" onclick="toggleDropdown()">
+        <img id="current-flag" src="./assets/portugal.png" alt="Idioma" />
+      </button>
+      <div id="dropdown" class="dropdown-content">
+        <button onclick="setLanguage('pt')">
+          <img src="./assets/portugal.png" />Português
+        </button>
+        <button onclick="setLanguage('en')">
+          <img src="./assets/uk.png" />English
+        </button>
+        <button onclick="setLanguage('es')">
+          <img src="./assets/espanha.png" />Español
+        </button>
+        <button onclick="setLanguage('fr')">
+          <img src="./assets/france.png" />Français
+        </button>
+      </div>
+    </div>
+
+    <button id="theme-toggle" onclick="toggleTheme()">🌙 Tema Escuro</button>
+
+    <div id="mensagens"></div>
+    <div id="respostas"></div>
+
+    <!-- Botão Voltar com ID para traduzir -->
+    <a href="index.html" class="voltar" id="btn-voltar">Voltar</a>
+
+    <script>
+      const flags = {
+        pt: "./assets/portugal.png",
+        en: "./assets/uk.png",
+        es: "./assets/espanha.png",
+        fr: "./assets/france.png",
+      };
+
+      const keywords = {
+        pt: {
+          ola: "Olá",
+          cliqueComecar: "Clique para começar:",
+          boasVindasResposta: "Olá, como posso ajudar?",
+          rotasPrompt: "Quais são as rotas disponíveis?",
+          btnPombais: "Rota dos Pombais",
+          btnFreixos: "Rota dos Freixos no Planalto Mirandês",
+          erro: "Erro na comunicação com o servidor.",
+          reiniciarChat: "Reiniciar Chat",
+          temaClaro: "Tema Claro",
+          temaEscuro: "Tema Escuro",
+          voltar: "Voltar",
+        },
+        en: {
+          ola: "Hello",
+          cliqueComecar: "Click to start:",
+          boasVindasResposta: "Hello, how can I help you?",
+          rotasPrompt: "Which routes are available?",
+          btnPombais: "Pombais Route",
+          btnFreixos: "Freixos Route on the Mirandese Plateau",
+          erro: "Error communicating with the server.",
+          reiniciarChat: "Restart Chat",
+          temaClaro: "Light Theme",
+          temaEscuro: "Dark Theme",
+          voltar: "Back",
+        },
+        es: {
+          ola: "Hola",
+          cliqueComecar: "Haz clic para comenzar:",
+          boasVindasResposta: "Hola, ¿en qué puedo ayudarte?",
+          rotasPrompt: "¿Cuáles son las rutas disponibles?",
+          btnPombais: "Ruta de los Pombais",
+          btnFreixos: "Ruta de los Freixos en el Planalto Mirandês",
+          erro: "Error en la comunicación con el servidor.",
+          reiniciarChat: "Reiniciar Chat",
+          temaClaro: "Tema Claro",
+          temaEscuro: "Tema Oscuro",
+          voltar: "Atrás",
+        },
+        fr: {
+          ola: "Bonjour",
+          cliqueComecar: "Cliquez pour commencer :",
+          boasVindasResposta: "Bonjour, comment puis-je vous aider ?",
+          rotasPrompt: "Quelles sont les routes disponibles ?",
+          btnPombais: "Route des Pombais",
+          btnFreixos: "Route des Freixos sur le plateau mirandais",
+          erro: "Erreur de communication avec le serveur.",
+          reiniciarChat: "Redémarrer le chat",
+          temaClaro: "Thème Clair",
+          temaEscuro: "Thème Sombre",
+          voltar: "Retour",
+        },
+      };
+
+      const ENDPOINT = "https://4f33-194-210-88-117.ngrok-free.app/webhook";
+      const mensagensDiv = document.getElementById("mensagens");
+      const respostasDiv = document.getElementById("respostas");
+
+      function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+          lang: params.get("lang"),
+          theme: params.get("theme"),
+        };
+      }
+
+      let lang = localStorage.getItem("selectedLanguage") || "pt";
+      let temaAtual = localStorage.getItem("theme") || "light";
+
+      const urlParams = getQueryParams();
+
+      if (urlParams.lang && keywords[urlParams.lang]) {
+        lang = urlParams.lang;
+        localStorage.setItem("selectedLanguage", lang);
+      }
+
+      if (urlParams.theme && ["dark", "light"].includes(urlParams.theme)) {
+        temaAtual = urlParams.theme;
+        localStorage.setItem("theme", temaAtual);
+      }
+
+      document.getElementById("current-flag").src = flags[lang];
+      let kw = keywords[lang];
+      document.getElementById("btn-voltar").textContent = kw.voltar;
+
+      function aplicarTema(tema) {
+        const body = document.body;
+        const btnTema = document.getElementById("theme-toggle");
+        if (tema === "dark") {
+          body.classList.add("dark");
+          btnTema.textContent = "☀️ " + kw.temaClaro;
+        } else {
+          body.classList.remove("dark");
+          btnTema.textContent = "🌙 " + kw.temaEscuro;
+        }
+        localStorage.setItem("theme", tema);
+        temaAtual = tema;
+      }
+
+      function toggleTheme() {
+        aplicarTema(temaAtual === "light" ? "dark" : "light");
+      }
+
+      aplicarTema(temaAtual);
+
+      function toggleDropdown() {
+        const dropdown = document.getElementById("dropdown");
+        dropdown.style.display =
+          dropdown.style.display === "block" ? "none" : "block";
+      }
+
+      function setLanguage(language) {
+        if (!keywords[language]) return;
+        lang = language;
+        localStorage.setItem("selectedLanguage", lang);
+        document.getElementById("current-flag").src = flags[lang];
+        kw = keywords[lang];
+        document.getElementById("btn-voltar").textContent = kw.voltar;
+        toggleDropdown();
+        aplicarTema(temaAtual);
+
+        const url = new URL(window.location);
+        url.searchParams.set("lang", language);
+        window.location.href = url.toString();
+      }
+
+      function mostrarMensagem(texto) {
+        mensagensDiv.innerHTML = "";
+        const linhas = texto.split("\n").filter((line) => line.trim() !== "");
+
+        linhas.forEach((linha) => {
+          const container = document.createElement("div");
+          container.className = "msg-container";
+
+          const spanTexto = document.createElement("span");
+          spanTexto.className = "msg-text";
+          spanTexto.textContent = linha;
+
+          const btnFalar = document.createElement("button");
+          btnFalar.className = "btn-voice";
+          btnFalar.title = "Ler mensagem";
+          btnFalar.textContent = "🔊";
+
+          btnFalar.onclick = () => {
+            if ("speechSynthesis" in window) {
+              const textoLimpo = linha
+                .replace(/[*]/g, "")
+                .replace(
+                  /[\u{1F600}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu,
+                  ""
+                )
+                .trim();
+
+              if (textoLimpo.length === 0) {
+                alert("Mensagem vazia para ler.");
+                return;
+              }
+
+              const utterance = new SpeechSynthesisUtterance(textoLimpo);
+              utterance.lang = lang;
+              window.speechSynthesis.speak(utterance);
+            } else {
+              alert("Seu navegador não suporta síntese de voz.");
+            }
+          };
+
+          container.appendChild(spanTexto);
+          container.appendChild(btnFalar);
+          mensagensDiv.appendChild(container);
+        });
+      }
+
+      function limparRespostas() {
+        respostasDiv.innerHTML = "";
+      }
+
+      function adicionarBotao(texto, callback) {
+        const botao = document.createElement("button");
+        botao.innerText = texto;
+        botao.onclick = callback;
+        respostasDiv.appendChild(botao);
+      }
+
+      let etapaFluxo = "inicio";
+
+      function resetChat() {
+        limparRespostas();
+        mostrarMensagem(kw.cliqueComecar);
+        etapaFluxo = "inicio";
+        adicionarBotao(kw.ola, () => {
+          etapaFluxo = "inicio";
+          enviarParaWebhook(kw.ola);
+        });
+      }
+
+      async function enviarParaWebhook(mensagem) {
+        limparRespostas();
+        try {
+          const res = await fetch(ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text: mensagem, languageCode: lang }),
+          });
+
+          const data = await res.json();
+          let mensagens = [];
+
+          if (Array.isArray(data)) {
+            mensagens = data;
+          } else if (data.fulfillment_response?.messages) {
+            mensagens = data.fulfillment_response.messages;
+          } else if (data.messages) {
+            mensagens = data.messages;
+          }
+
+          let textoResposta = "";
+          let botoes = [];
+
+          mensagens.forEach((msg) => {
+            if (msg.text?.text) {
+              textoResposta += msg.text.text[0] + "\n";
+            } else if (typeof msg.text === "string") {
+              textoResposta += msg.text + "\n";
+            }
+
+            if (msg.buttons) {
+              botoes = msg.buttons;
+            }
+
+            if (msg.payload?.richContent) {
+              msg.payload.richContent.forEach((bloco) => {
+                bloco.forEach((item) => {
+                  if (item.type === "description" && item.text) {
+                    textoResposta += item.text + "\n";
+                  }
+                  if (item.type === "button" && item.text && item.event) {
+                    botoes.push({
+                      title: item.text,
+                      payload: item.event.name,
+                    });
+                  }
+                });
+              });
+            }
+          });
+
+          textoResposta = textoResposta.trim();
+          mostrarMensagem(textoResposta);
+          limparRespostas();
+
+          if (botoes.length > 0) {
+            botoes.forEach((btn) => {
+              if (
+                btn.title.toLowerCase() === kw.reiniciarChat.toLowerCase() ||
+                ["restart", "reset", "reiniciar"].includes(
+                  btn.payload?.toLowerCase?.()
+                )
+              ) {
+                adicionarBotao(btn.title, () => resetChat());
+              } else {
+                adicionarBotao(btn.title, () =>
+                  enviarParaWebhook(btn.payload || btn.title)
+                );
+              }
+            });
+          } else if (etapaFluxo === "inicio") {
+            etapaFluxo = "aguardando_rotas";
+            adicionarBotao(kw.rotasPrompt, () => {
+              enviarParaWebhook(kw.rotasPrompt);
+              etapaFluxo = "mostrar_rotas";
+              limparRespostas();
+            });
+          } else if (etapaFluxo === "mostrar_rotas") {
+            adicionarBotao(kw.btnPombais, () =>
+              enviarParaWebhook(kw.btnPombais)
+            );
+            adicionarBotao(kw.btnFreixos, () =>
+              enviarParaWebhook(kw.btnFreixos)
+            );
+          }
+        } catch (error) {
+          mostrarMensagem(kw.erro);
+          limparRespostas();
+          console.error(error);
+        }
+      }
+
+      resetChat();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+{
+  "type": "MaxHistoryTrackerFeaturizer",
+  "state_featurizer": {
+    "action_texts": [],
+    "entity_tag_specs": [],
+    "feature_states": {
+      "intent": {
+        "back": 0,
+        "bot_challenge": 1,
+        "goodbye": 2,
+        "informacoes_aparelhos_eletricos": 3,
+        "informacoes_barulho": 4,
+        "informacoes_contato_urgente": 5,
+        "informacoes_escada_kgh": 6,
+        "informacoes_sobre_chaves": 7,
+        "nlu_fallback": 8,
+        "out_of_scope": 9,
+        "restart": 10,
+        "session_start": 11
+      },
+      "action_name": {
+        "action_listen": 0,
+        "action_restart": 1,
+        "action_session_start": 2,
+        "action_default_fallback": 3,
+        "action_deactivate_loop": 4,
+        "action_revert_fallback_events": 5,
+        "action_default_ask_affirmation": 6,
+        "action_default_ask_rephrase": 7,
+        "action_two_stage_fallback": 8,
+        "action_unlikely_intent": 9,
+        "action_back": 10,
+        "...": 11,
+        "action_extract_slots": 12,
+        "utter_informacoes_sobre_chaves": 13,
+        "utter_informacoes_aparelhos_eletricos": 14,
+        "utter_informacoes_escada_kgh": 15,
+        "utter_informacoes_barulho": 16,
+        "utter_informacoes_contato_urgente": 17,
+        "utter_goodbye": 18,
+        "utter_iamabot": 19
+      },
+      "entities": {},
+      "slots": {},
+      "active_loop": {}
+    }
+  },
+  "remove_duplicates": true,
+  "max_history": 5
+}

@@ -1,0 +1,28 @@
+{
+  "lookup": {
+    "rules": {
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_contato_urgente\"}}]": "utter_informacoes_contato_urgente",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_contato_urgente\"}}, {\"prev_action\": {\"action_name\": \"utter_informacoes_contato_urgente\"}, \"user\": {\"intent\": \"informacoes_contato_urgente\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}]": "utter_goodbye",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}, {\"prev_action\": {\"action_name\": \"utter_goodbye\"}, \"user\": {\"intent\": \"goodbye\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_barulho\"}}]": "utter_informacoes_barulho",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_barulho\"}}, {\"prev_action\": {\"action_name\": \"utter_informacoes_barulho\"}, \"user\": {\"intent\": \"informacoes_barulho\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_sobre_chaves\"}}]": "utter_informacoes_sobre_chaves",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_sobre_chaves\"}}, {\"prev_action\": {\"action_name\": \"utter_informacoes_sobre_chaves\"}, \"user\": {\"intent\": \"informacoes_sobre_chaves\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_escada_kgh\"}}]": "utter_informacoes_escada_kgh",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_escada_kgh\"}}, {\"prev_action\": {\"action_name\": \"utter_informacoes_escada_kgh\"}, \"user\": {\"intent\": \"informacoes_escada_kgh\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bot_challenge\"}}]": "utter_iamabot",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bot_challenge\"}}, {\"prev_action\": {\"action_name\": \"utter_iamabot\"}, \"user\": {\"intent\": \"bot_challenge\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_aparelhos_eletricos\"}}]": "utter_informacoes_aparelhos_eletricos",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_aparelhos_eletricos\"}}, {\"prev_action\": {\"action_name\": \"utter_informacoes_aparelhos_eletricos\"}, \"user\": {\"intent\": \"informacoes_aparelhos_eletricos\"}}]": "action_listen"
+    },
+    "rule_only_slots": [],
+    "rule_only_loops": [],
+    "rules_for_loop_unhappy_path": {},
+    "rules_not_in_stories": [
+      "predicting default action with intent back",
+      "predicting default action with intent restart",
+      "predicting default action with intent session_start"
+    ]
+  }
+}

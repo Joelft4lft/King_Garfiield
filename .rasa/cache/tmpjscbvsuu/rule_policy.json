@@ -1,0 +1,52 @@
+{
+  "lookup": {
+    "rules": {
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_contato_urgente\"}}]": "utter_informacoes_contato_urgente",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_contato_urgente\"}}, {\"prev_action\": {\"action_name\": \"utter_informacoes_contato_urgente\"}, \"user\": {\"intent\": \"informacoes_contato_urgente\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}]": "utter_goodbye",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}, {\"prev_action\": {\"action_name\": \"utter_goodbye\"}, \"user\": {\"intent\": \"goodbye\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ponto_5_cova_de_lua\"}}]": "utter_ponto_5_cova_de_lua",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ponto_5_cova_de_lua\"}}, {\"prev_action\": {\"action_name\": \"utter_ponto_5_cova_de_lua\"}, \"user\": {\"intent\": \"ponto_5_cova_de_lua\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_barulho\"}}]": "utter_informacoes_barulho",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_barulho\"}}, {\"prev_action\": {\"action_name\": \"utter_informacoes_barulho\"}, \"user\": {\"intent\": \"informacoes_barulho\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_aparelhos_eletricos\"}}]": "utter_informacoes_aparelhos_eletricos",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_aparelhos_eletricos\"}}, {\"prev_action\": {\"action_name\": \"utter_informacoes_aparelhos_eletricos\"}, \"user\": {\"intent\": \"informacoes_aparelhos_eletricos\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_sobre_chaves\"}}]": "utter_informacoes_sobre_chaves",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_sobre_chaves\"}}, {\"prev_action\": {\"action_name\": \"utter_informacoes_sobre_chaves\"}, \"user\": {\"intent\": \"informacoes_sobre_chaves\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ponto_3_importancia\"}}]": "utter_ponto_3_importancia",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ponto_3_importancia\"}}, {\"prev_action\": {\"action_name\": \"utter_ponto_3_importancia\"}, \"user\": {\"intent\": \"ponto_3_importancia\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ponto_1_pombais\"}}]": "utter_ponto_1_pombais",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ponto_1_pombais\"}}, {\"prev_action\": {\"action_name\": \"utter_ponto_1_pombais\"}, \"user\": {\"intent\": \"ponto_1_pombais\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"saudacao\"}}]": "utter_saudacao",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"saudacao\"}}, {\"prev_action\": {\"action_name\": \"utter_saudacao\"}, \"user\": {\"intent\": \"saudacao\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"rota_dos_pombais\"}}]": "utter_rota_dos_pombais",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"rota_dos_pombais\"}}, {\"prev_action\": {\"action_name\": \"utter_rota_dos_pombais\"}, \"user\": {\"intent\": \"rota_dos_pombais\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ponto_4_preservacao\"}}]": "utter_ponto_4_preservacao",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ponto_4_preservacao\"}}, {\"prev_action\": {\"action_name\": \"utter_ponto_4_preservacao\"}, \"user\": {\"intent\": \"ponto_4_preservacao\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"perguntar_como_chegar\"}}]": "utter_como_chegar",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"perguntar_como_chegar\"}}, {\"prev_action\": {\"action_name\": \"utter_como_chegar\"}, \"user\": {\"intent\": \"perguntar_como_chegar\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_escada_kgh\"}}]": "utter_informacoes_escada_kgh",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_escada_kgh\"}}, {\"prev_action\": {\"action_name\": \"utter_informacoes_escada_kgh\"}, \"user\": {\"intent\": \"informacoes_escada_kgh\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_restaurantes\"}}]": "utter_informacoes_restaurantes",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_restaurantes\"}}, {\"prev_action\": {\"action_name\": \"utter_informacoes_restaurantes\"}, \"user\": {\"intent\": \"informacoes_restaurantes\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ponto_2_arquitetura\"}}]": "utter_ponto_2_arquitetura",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ponto_2_arquitetura\"}}, {\"prev_action\": {\"action_name\": \"utter_ponto_2_arquitetura\"}, \"user\": {\"intent\": \"ponto_2_arquitetura\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bot_challenge\"}}]": "utter_iamabot",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bot_challenge\"}}, {\"prev_action\": {\"action_name\": \"utter_iamabot\"}, \"user\": {\"intent\": \"bot_challenge\"}}]": "action_listen"
+    },
+    "rule_only_slots": [],
+    "rule_only_loops": [],
+    "rules_for_loop_unhappy_path": {},
+    "rules_not_in_stories": [
+      "predicting default action with intent session_start",
+      "predicting default action with intent restart",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"perguntar_como_chegar\"}}, {\"prev_action\": {\"action_name\": \"utter_como_chegar\"}, \"user\": {\"intent\": \"perguntar_como_chegar\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_restaurantes\"}}, {\"prev_action\": {\"action_name\": \"utter_informacoes_restaurantes\"}, \"user\": {\"intent\": \"informacoes_restaurantes\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"perguntar_como_chegar\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"saudacao\"}}]",
+      "predicting default action with intent back",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informacoes_restaurantes\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"saudacao\"}}, {\"prev_action\": {\"action_name\": \"utter_saudacao\"}, \"user\": {\"intent\": \"saudacao\"}}]"
+    ]
+  }
+}
