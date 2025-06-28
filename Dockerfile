@@ -1,4 +1,5 @@
 FROM python:3.8-slim
+RUN pip install --upgrade pip
 
 # Evita interações durante build
 ENV DEBIAN_FRONTEND=noninteractive
