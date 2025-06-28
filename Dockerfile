@@ -17,7 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN rasa train
 
 # Expõe a porta padrão do Rasa
-EXPOSE 1000
+EXPOSE 10000
 
 # Comando para rodar o Rasa quando o container iniciar
-CMD ["sh", "-c", "rasa run --enable-api --cors '*' --port ${PORT:-1000}"]
+CMD ["sh", "-c", "rasa run --enable-api --cors '*' --port ${PORT}"]
