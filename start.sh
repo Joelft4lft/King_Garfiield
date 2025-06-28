@@ -1,2 +1,3 @@
 #!/bin/bash
-rasa shell --enable-api --cors "*" --debug
+rasa run --enable-api --cors "*" --port $PORT
+
