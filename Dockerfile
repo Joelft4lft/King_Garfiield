@@ -1,18 +1,27 @@
-# Use a versão compatível com Rasa
-FROM python:3.11-slim
+FROM python:3.8-slim
 
-# Define diretório de trabalho
+# Evita interações durante build
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Atualiza pacotes e instala dependências do sistema
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Cria e define diretório de trabalho
 WORKDIR /app
 
-# Copia os arquivos
+# Copia arquivos do projeto para a imagem
 COPY . /app
 
-# Instala dependências
+# Atualiza pip e instala dependências do projeto
 RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Expõe a porta usada no startCommand (Render usa a variável $PORT)
+# Expõe a porta usada pelo Rasa
 EXPOSE 10000
 
-# Comando de inicialização
+# Comando para iniciar o Rasa com API e CORS habilitado
 CMD ["rasa", "run", "--enable-api", "--cors", "*", "--port", "10000"]
