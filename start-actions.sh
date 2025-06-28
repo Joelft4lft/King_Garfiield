@@ -1,2 +1,2 @@
 #!/bin/bash
-rasa shell actions --debug
+rasa run actions --debug
