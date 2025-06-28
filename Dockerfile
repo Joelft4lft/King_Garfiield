@@ -20,4 +20,4 @@ RUN rasa train
 EXPOSE 1000
 
 # Comando para rodar o Rasa quando o container iniciar
-CMD ["rasa", "run", "--enable-api", "--cors", "*", "--port", "1000"]
+CMD ["sh", "-c", "rasa run --enable-api --cors '*' --port ${PORT:-1000}"]
