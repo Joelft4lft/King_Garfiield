@@ -1,28 +1,20 @@
+# Usa imagem base com Python 3.8
 FROM python:3.8-slim
-RUN pip install --upgrade pip
 
-# Evita interações durante build
-ENV DEBIAN_FRONTEND=noninteractive
-
-# Atualiza pacotes e instala dependências do sistema
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    curl \
-    git \
-    && rm -rf /var/lib/apt/lists/*
-
-# Cria e define diretório de trabalho
+# Define diretório de trabalho no container
 WORKDIR /app
 
-# Copia arquivos do projeto para a imagem
+# Copia os arquivos do projeto para o container
 COPY . /app
 
-# Atualiza pip e instala dependências do projeto
+# Atualiza o pip
 RUN pip install --upgrade pip
+
+# Instala as dependências
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expõe a porta usada pelo Rasa
-EXPOSE 10000
+# Expõe a porta padrão do Rasa
+EXPOSE 5005
 
-# Comando para iniciar o Rasa com API e CORS habilitado
-CMD ["rasa", "run", "--enable-api", "--cors", "*", "--port", "10000"]
+# Comando para rodar o Rasa quando o container iniciar
+CMD ["rasa", "run", "--enable-api", "--cors", "*"]
