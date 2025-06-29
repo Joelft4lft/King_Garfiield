@@ -6,7 +6,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const RASA_URL = "http://localhost:5005/webhooks/rest/webhook";
+const RASA_URL =
+  "https://king-garfiield-3-ids0.onrender.com/webhooks/rest/webhook";
 const TRANSLATE_API_URL = "https://api.mymemory.translated.net/get";
 
 // Cache de traduções para evitar chamadas repetidas
