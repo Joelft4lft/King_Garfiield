@@ -7,8 +7,6 @@ COPY . /app
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-RUN rasa train
-
 EXPOSE 10000
 
 CMD ["sh", "-c", "rasa run --enable-api --cors '*' --port $PORT"]
