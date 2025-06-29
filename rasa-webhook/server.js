@@ -29,7 +29,7 @@ function splitText(text, maxLength = 500) {
   return parts;
 }
 
-// Função para traduzir texto usando MyMemory API com cache e divisão (sem delay)
+// Função para traduzir texto usando MyMemory API com cache, divisão e rate limit
 async function traduzirTexto(text, sourceLang, targetLang) {
   const cacheKey = generateCacheKey(text, sourceLang, targetLang);
   if (translationCache[cacheKey]) {
@@ -39,18 +39,19 @@ async function traduzirTexto(text, sourceLang, targetLang) {
   const parts = splitText(text);
 
   try {
-    // Traduz todas as partes em paralelo para ganhar velocidade
-    const responses = await Promise.all(
-      parts.map((part) =>
-        axios.get(TRANSLATE_API_URL, {
-          params: {
-            q: part,
-            langpair: `${sourceLang}|${targetLang}`,
-            de: "garfieldhouse22@gmail.com", // Substitua pelo seu email real
-          },
-        })
-      )
-    );
+    const responses = [];
+
+    for (const part of parts) {
+      const response = await axios.get(TRANSLATE_API_URL, {
+        params: {
+          q: part,
+          langpair: `${sourceLang}|${targetLang}`,
+          de: "garfieldhouse22@gmail.com", // Substitua por seu email real
+        },
+      });
+
+      responses.push(response);
+    }
 
     const translatedText = responses
       .map((r) => r.data.responseData.translatedText)
