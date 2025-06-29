@@ -180,33 +180,34 @@ nlu:
       - Cova de Lua
       - Me fale sobre o ponto 5 da rota
       - Como chegar ao ponto 5 da Rota dos Pombais?
+
   - intent: final_da_rota_pombais
     examples: |
       - final_da_rota_pombais
       - Encerrar rota pombais
 
-  - intent: rota_dos_freixos_no_planalto_mirandês
+  - intent: rota_dos_freixos_no_planalto_mirandes
     examples: |
-      - Rota_dos_freixos_no_planalto_mirandês
-      - Quero saber sobre a Rota dos dos_freixos_no_planalto_mirandês
-      - Me fale mais sobre a rota_dos_freixos_no_planalto_mirandês
+      - Rota_dos_freixos_no_planalto_mirandes
+      - Quero saber sobre a Rota dos dos_freixos_no_planalto_mirandes
+      - Me fale mais sobre a rota_dos_freixos_no_planalto_mirandes
 
-  - intent: A_paisagem_do_planalto_mirandês
+  - intent: a_paisagem_do_planalto_mirandes
     examples: |
-      - A_paisagem_do_planalto_mirandês
+      - A_paisagem_do_planalto_mirandes
 
-  - intent: Os_freixos_guardiões_da_paisagem
+  - intent: os_freixos_guardioes_da_paisagem
     examples: |
-      - Os_freixos_guardiões_da_paisagem
+      - Os_freixos_guardioes_da_paisagem
 
-  - intent: A_aldeia_e_a_tradição
+  - intent: a_aldeia_e_a_tradicao
     examples: |
-      - A_aldeia_e_a_tradição
+      - A_aldeia_e_a_tradicao
 
-  - intent: Os_lameiros_e_o_seu_papel_na_vida_rural
+  - intent: os_lameiros_e_seu_papel_na_vida_rural
     examples: |
-      - Os_lameiros_e_o_seu_papel_na_vida_rural
+      - Os_lameiros_e_seu_papel_na_vida_rural
 
-  - intent: final_da_rota_sobre_planalto_mirandês
+  - intent: final_da_rota_sobre_planalto_mirandes
     examples: |
-      - final_da_rota_sobre_planalto_mirandês
+      - final_da_rota_sobre_planalto_mirandes
