@@ -20,6 +20,12 @@ intents:
   - final_da_rota_pombais
   - perguntar_rotas_disponiveis
   - terminar_rota
+  - rota_dos_freixos_no_planalto_mirandês
+  - A_paisagem_do_planalto_mirandês
+  - Os_lameiros_e_o_seu_papel_na_vida_rural
+  - Os_freixos_guardiões_da_paisagem
+  - A_aldeia_e_a_tradição
+  - final_da_rota_sobre_planalto_mirandês
 
 responses:
   utter_saudacao:
