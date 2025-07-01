@@ -237,11 +237,13 @@ app.post("/fulfillment", async (req, res) => {
   const userLang = req.body.locale || "pt";
 
   try {
+    // Traduz para pt se necessário
     const textoParaRasa =
       userLang !== "pt"
         ? await traduzirTexto(userMessage, userLang, "pt")
         : userMessage;
 
+    // Chama o Rasa
     const respostaRasa = await axios.post(RASA_URL, {
       sender: "usuario_assistant",
       message: textoParaRasa,
@@ -250,17 +252,42 @@ app.post("/fulfillment", async (req, res) => {
     const respostaTexto =
       respostaRasa.data[0]?.text || "Desculpe, não entendi.";
 
+    // Traduz para idioma do usuário
     const respostaFinal =
       userLang !== "pt"
         ? await traduzirTexto(respostaTexto, "pt", userLang)
         : respostaTexto;
 
+    // Link do seu PWA (troque pelo link real do seu PWA)
+    const pwaUrl = "https://king-garfield-house-a5f20.web.app/"; // Exemplo, ajuste se for outro
+
     res.json({
       prompt: {
         override: true,
-        firstSimple: {
-          speech: respostaFinal,
-          text: respostaFinal,
+        richResponse: {
+          items: [
+            {
+              simpleResponse: {
+                textToSpeech: respostaFinal,
+                displayText: respostaFinal,
+              },
+            },
+            {
+              basicCard: {
+                title: "King Garfield House",
+                formattedText:
+                  "Clique no botão abaixo para abrir o aplicativo.",
+                buttons: [
+                  {
+                    title: "Abrir App",
+                    openUrlAction: {
+                      url: pwaUrl,
+                    },
+                  },
+                ],
+              },
+            },
+          ],
         },
       },
     });
