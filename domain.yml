@@ -20,7 +20,7 @@ intents:
   - final_da_rota_pombais
   - perguntar_rotas_disponiveis
   - terminar_rota
-  - rota_dos_freixos_no_planalto_mirandês
+  - rota_freixos_planalto
   - A_paisagem_do_planalto_mirandês
   - Os_lameiros_e_o_seu_papel_na_vida_rural
   - Os_freixos_guardiões_da_paisagem
@@ -209,7 +209,7 @@ responses:
         - title: "Reiniciar Chat"
           payload: "/reset_chat"
 
-  utter_rota_dos_freixos_no_planalto_mirandês:
+  utter_rota_freixos_planalto:
     - text: |
         Bem-vindo à Rota dos Freixos, um percurso encantador pelo coração do Planalto Mirandês!
 
@@ -294,3 +294,4 @@ actions:
   - utter_A_paisagem_do_planalto_mirandês
   - utter_Os_lameiros_e_o_seu_papel_na_vida_rural
   - utter_final_da_rota_sobre_planalto_mirandês
+  - utter_rota_freixos_planalto

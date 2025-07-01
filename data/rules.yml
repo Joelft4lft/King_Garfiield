@@ -91,10 +91,10 @@ rules:
       - intent: final_da_rota_pombais
       - action: utter_final_da_rota_pombais
 
-  - rule: rota_dos_freixos_no_planalto_mirandês
+  - rule: Responder rota_freixos_planalto
     steps:
-      - intent: rota_dos_freixos_no_planalto_mirandês
-      - action: utter_rota_dos_freixos_no_planalto_mirandês
+      - intent: rota_freixos_planalto
+      - action: utter_rota_freixos_planalto
 
   - rule: A_paisagem_do_planalto_mirandês
     steps:

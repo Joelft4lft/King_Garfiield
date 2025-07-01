@@ -1,23 +1,33 @@
-language: en
+language: pt
+
 pipeline:
-- name: WhitespaceTokenizer
-- name: RegexFeaturizer
-- name: LexicalSyntacticFeaturizer
-- name: CountVectorsFeaturizer
-- name: DIETClassifier
-  epochs: 100
-- name: EntitySynonymMapper
-- name: ResponseSelector
-  epochs: 100
+  - name: SpacyNLP
+    model: pt_core_news_sm
+  - name: SpacyTokenizer
+  - name: SpacyFeaturizer
+  - name: RegexFeaturizer
+  - name: LexicalSyntacticFeaturizer
+  - name: CountVectorsFeaturizer
+    analyzer: word
+    min_ngram: 1
+    max_ngram: 2
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 3
+    max_ngram: 5
+  - name: DIETClassifier
+    epochs: 100
+    constrain_similarities: true
+  - name: EntitySynonymMapper
+  - name: ResponseSelector
+    epochs: 100
+  - name: FallbackClassifier
+    threshold: 0.4
+    ambiguity_threshold: 0.1
 
 policies:
-- name: MemoizationPolicy
-- name: RulePolicy
-- name: UnexpecTEDIntentPolicy
-  max_history: 5
-  epochs: 100
-- name: TEDPolicy
-  max_history: 5
-  epochs: 100
-  constrain_similarities: true
-assistant_id: 20250629-032033-chief-skunk
+  - name: MemoizationPolicy
+  - name: RulePolicy
+  - name: TEDPolicy
+    max_history: 5
+    epochs: 100
