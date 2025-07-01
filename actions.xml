@@ -1,6 +1,0 @@
-<actions>
-  <action intentName="actions.intent.OPEN_APP_FEATURE">
-    <fulfillment url="https://king-garfiield-server.onrender.com/fulfillment" />
-    <parameter-mapping intentParameter="any" required="false" />
-  </action>
-</actions>
