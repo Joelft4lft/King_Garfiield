@@ -6,7 +6,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const RASA_URL = "http://localhost:5005/webhooks/rest/webhook";
+const RASA_URL =
+  "https://king-garfiield-3-ids0.onrender.com/webhooks/rest/webhook";
 const TRANSLATE_API_URL = "https://api.mymemory.translated.net/get";
 
 // Cache de traduções para evitar chamadas repetidas
@@ -233,9 +234,51 @@ app.post("/webhook", async (req, res) => {
 
 // Endpoint para o Google Assistant fulfillment
 app.post("/fulfillment", async (req, res) => {
-  const userMessage = req.body.intent?.params?.any?.resolved ?? "Olá";
+  const intentName = req.body.intent?.displayName || "";
   const userLang = req.body.locale || "pt";
+  const userMessage = req.body.intent?.params?.any?.resolved ?? "Olá";
 
+  // Se for o intent para abrir o PWA
+  if (intentName === "Abrir_PWA_King") {
+    return res.json({
+      fulfillment_response: {
+        messages: [
+          {
+            payload: {
+              google: {
+                expectUserResponse: false,
+                richResponse: {
+                  items: [
+                    {
+                      simpleResponse: {
+                        textToSpeech:
+                          "Aqui está o King Garfield House. Toque no link para abrir.",
+                      },
+                    },
+                    {
+                      basicCard: {
+                        title: "King Garfield House",
+                        buttons: [
+                          {
+                            title: "Abrir app",
+                            openUriAction: {
+                              uri: "https://king-garfield-house-a5f20.web.app/", 
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            },
+          },
+        ],
+      },
+    });
+  }
+
+  // Se não for o intent Abrir_PWA, continua seu fluxo normal
   try {
     const textoParaRasa =
       userLang !== "pt"
