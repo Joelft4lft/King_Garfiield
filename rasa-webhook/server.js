@@ -4,6 +4,7 @@ const axios = require("axios");
 
 const app = express();
 app.use(cors());
+app.options("*", cors());
 app.use(express.json());
 
 const RASA_URL =
@@ -46,7 +47,7 @@ async function traduzirTexto(text, sourceLang, targetLang) {
         params: {
           q: part,
           langpair: `${sourceLang}|${targetLang}`,
-          de: "garfieldhouse22@gmail.com", // Substitua por seu email real
+          de: "garfieldhouse22@gmail.com",
         },
       });
 
@@ -78,7 +79,7 @@ async function traduzirBotoes(buttons, sourceLang, targetLang) {
   return textosTraduzidos;
 }
 
-// Endpoint para tradução manual (se precisar)
+// Endpoint para tradução manual
 app.post("/translate", async (req, res) => {
   const { q, source, target } = req.body;
 
@@ -259,7 +260,7 @@ app.post("/fulfillment", async (req, res) => {
         : respostaTexto;
 
     // Link do seu PWA (troque pelo link real do seu PWA)
-    const pwaUrl = "https://king-garfield-house-a5f20.web.app/"; // Exemplo, ajuste se for outro
+    const pwaUrl = "https://king-garfield-house-a5f20.web.app/";
 
     res.json({
       prompt: {
